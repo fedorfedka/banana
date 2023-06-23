@@ -12,6 +12,6 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(() => {
-    console.log('Server started')
+const listener = app.listen(() => {
+    console.log('Server started on port ' + listener.address().port)
 })
