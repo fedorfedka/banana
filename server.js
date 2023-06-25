@@ -3,15 +3,18 @@ const cors = require('cors')
 const sendTable = require('./sendDB')
 const app = express();
 
-app.use(cors())
+const router = express.Router();
+router.use(cors())
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     sendTable()
     .then((result) => {
         res.send(result)
     })
 })
 
-const listener = app.listen(() => {
+app.use('/', router)
+
+const listener = app.listen(3001,() => {
     console.log('Server started on port ' + listener.address().port)
 })
